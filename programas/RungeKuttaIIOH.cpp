@@ -2,13 +2,13 @@
 #include <fstream>
 #include <cmath>
 
-// FunÁ„o que define as equaÁıes diferenciais
+// Fun√ß√£o que define as equa√ß√µes diferenciais
 void equations(double x, double p, double& dx_dt, double& dp_dt) {
     dx_dt = p;
     dp_dt = -x;
 }
 
-// MÈtodo de Runge-Kutta de segunda ordem
+// M√©todo de Runge-Kutta de segunda ordem
 void rungeKutta2(double& x, double& p, double dt) {
     double x1, x2, p1, p2;
     double dx_dt, dp_dt;
@@ -29,17 +29,17 @@ void rungeKutta2(double& x, double& p, double dt) {
 }
 
 int main() {
-    // Par‚metros do problema
+    // Par√¢metros do problema
     double k = 1.0; // Constante de mola
     double m = 1.0; // Massa
     double dt = 0.01; // Passo de tempo
-    double t_max = 100.0; // Tempo m·ximo de simulaÁ„o
+    double t_max = 100.0; // Tempo m√°ximo de simula√ß√£o
 
-    // CondiÁıes iniciais
-    double x0 = 1.0; // PosiÁ„o inicial
+    // Condi√ß√µes iniciais
+    double x0 = 1.0; // Posi√ß√£o inicial
     double p0 = 0.0; // Momento inicial
 
-    // Vari·veis de estado
+    // Vari√°veis de estado
     double x = x0;
     double p = p0;
 
@@ -50,16 +50,16 @@ int main() {
         return 1;
     }
 
-    // IntegraÁ„o numÈrica usando o mÈtodo de Runge-Kutta de segunda ordem
+    // Integra√ß√£o num√©rica usando o m√©todo de Runge-Kutta de segunda ordem
     double t = 0.0;
     while (t <= t_max) {
         // Escrever os valores de x e p no arquivo
         file << x << " " << p << std::endl;
 
-        // Atualizar os valores de x e p usando o mÈtodo de Runge-Kutta de segunda ordem
+        // Atualizar os valores de x e p usando o m√©todo de Runge-Kutta de segunda ordem
         rungeKutta2(x, p, dt);
 
-        // AvanÁar o tempo
+        // Avan√ßar o tempo
         t += dt;
     }
 
